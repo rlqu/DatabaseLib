@@ -1,9 +1,9 @@
 # DatabaseLib8
 
-    This project is a library for working with databases.
-    Originally it is being coded by @Mischmaschine but since he removed support for Java 8, I forked the repository and added it back.
-    Now that there's Java 8 support, you can't use things like guava cache but if you're cool enough, you can code your own cache. 😎
-    It supports MariaDB, MySQL, PostgreSQL, H2SQL, SQLite, MongoDB and Redis.
+This project is a library for working with databases.
+Originally it is being coded by @Mischmaschine but since he removed support for Java 8, I forked the repository and added it back.
+Now that there's Java 8 support, you can't use things like guava cache but if you're cool enough, you can code your own cache. 😎
+It supports MariaDB, MySQL, PostgreSQL, H2SQL, SQLite, MongoDB and Redis.
 
 ## Import
 
