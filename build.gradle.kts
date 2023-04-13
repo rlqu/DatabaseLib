@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.0"
+    kotlin("jvm") version "1.8.0"
     id("com.github.johnrengelman.shadow") version "7.0.0"
     id("org.jetbrains.dokka") version "1.6.21"
     id("maven-publish")
-    kotlin("plugin.serialization") version "1.7.10"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 group = "de.mischmaschine"
@@ -34,6 +34,7 @@ dependencies {
     testImplementation("org.mariadb.jdbc:mariadb-java-client:3.0.6")
     
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    implementation("io.github.reactivecircus.cache4k:cache4k:0.9.0")
 
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.7.20")
     implementation(kotlin("reflect"))
@@ -44,10 +45,6 @@ tasks {
         dependsOn(shadowJar)
     }
 }
-
-/*tasks.test {
-    useJUnitPlatform()
-}*/
 
 publishing {
     publications {
@@ -61,7 +58,15 @@ publishing {
     }
 }
 
+val targetCompatibility = JavaVersion.VERSION_1_8.toString()
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = targetCompatibility
 }
+
+tasks.withType<JavaCompile> {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = targetCompatibility
+}
+
+
